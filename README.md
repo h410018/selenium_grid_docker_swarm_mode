@@ -103,3 +103,34 @@ ref:https://github.com/dockersamples/docker-swarm-visualizer
 Then you can check out the console page to see if node register the hub.
 ![image](https://github.com/h410018/selenium_grid_docker_swarm_mode/blob/master/%E6%88%AA%E5%9C%96%202020-04-17%20%E4%B8%8B%E5%8D%883.07.02.png)
 
+
+## 9. Execute TestNG test
+```
+public class SeleniumGridTest {
+
+  InitialSetup node_1,node_2,dockerchromenode,dockerfirefoxnode;
+  @Test
+  public void f() {
+	  dockerchromenode.driver.get(InitialSetup.setUrl());
+	  System.out.println("chrome window:"+dockerchromenode.driver.getTitle());
+	  dockerfirefoxnode.driver.get(InitialSetup.setUrl());
+	  System.out.println("firefox window:"+dockerfirefoxnode.driver.getTitle());  
+  }
+  @BeforeTest
+  public void beforeTest() throws MalformedURLException {	   
+	  dockerchromenode = new InitialSetup();
+	  dockerfirefoxnode = new InitialSetup();	  
+	  dockerchromenode.setNode("http://192.168.50.166:4040/wd/hub");
+	  dockerfirefoxnode.setNode("http://192.168.50.166:4040/wd/hub"); 
+	  dockerchromenode.showViewForChrome();
+	  dockerfirefoxnode.showViewForFireFox();
+  }
+
+  @AfterTest
+  public void afterTest() throws InterruptedException {
+	  Thread.sleep(5000);
+	  dockerchromenode.driver.quit();
+	  dockerfirefoxnode.driver.quit();
+  }
+}
+```
