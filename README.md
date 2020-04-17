@@ -134,3 +134,6 @@ public class SeleniumGridTest {
   }
 }
 ```
+
+See how test execute via vnc viewer
+![image](https://github.com/h410018/selenium_grid_docker_swarm_mode/blob/master/media.gif)
