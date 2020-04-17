@@ -92,3 +92,14 @@ docker@v1:~$ docker service create --name node-chrome --replicas 1 --constraint 
 
 docker@v1:~$ docker service create --name node-firfox --replicas 1 --constraint node.hostname==v3 -p 7900:5900 --network seleniumnet -e HUB_PORT_4444_TCP_ADDR=selenium-hub -e HUB_PORT_4444_TCP_PORT=4444 selenium/node-firefox-debug bash -c 'SE_OPTS="-host $HOSTNAME" /opt/bin/entry_point.sh'
 ```
+
+Here's using docker-swarm-visualizer plugin to see how swarm cluster looks like. 
+<br>
+ref:https://github.com/dockersamples/docker-swarm-visualizer
+
+![image](https://github.com/h410018/selenium_grid_docker_swarm_mode/blob/master/%E6%88%AA%E5%9C%96%202020-04-17%20%E4%B8%8B%E5%8D%883.07.18.png)
+
+
+Then you can check out the console page to see if node register the hub.
+![image](https://github.com/h410018/selenium_grid_docker_swarm_mode/blob/master/%E6%88%AA%E5%9C%96%202020-04-17%20%E4%B8%8B%E5%8D%883.07.02.png)
+
